@@ -1,4 +1,4 @@
-# === TinyZero GSM8K Integration with Fine-Tuning ===
+# === TinyZero GSM8K Integration with Fine-Tuning and Early Stopping ===
 import random
 import torch
 import torch.nn as nn
@@ -43,33 +43,59 @@ class GSM8KGame:
         return " ".join(self.history)
 
 # === TinyZero configuration for GSM8K ===
+# values that works with example problem: 1e-6, 2, 0.0001
 def gsm8k_config():
     return {
-        "lr": 1e-5,
-        "epochs": 3
+        "lr": 1e-6,             # Initial value: 1e-5, 
+        "patience": 2,           # Number of epochs without improvement before stopping
+        "min_delta": 0.0001       # Minimum change in loss to qualify as improvement
+        # "accuracy_req_steps": 3,    # Minimum number of times the loss needs to be less than or equal to "accuracy_req"
+        # "accuracy_req": 0.15        # Adequate loss for training.
     }
 
 # === GSM8K problem sample ===
-def get_sample_problem():
-    return {
-        "question": "Tom had 3 apples. He buys 2 more. How many apples does he have?",
-        "steps": [
-            "Tom starts with 3 apples.",
-            "He buys 2 more.",
-            "3 + 2 = 5",
-            "Answer: 5 apples."
-        ]
-    }
 
-# === Fine-tune LLM using teacher-forced steps ===
+from datasets import load_dataset
+
+def load_gsm8k_split(split="train", num_examples=10):
+    dataset = load_dataset("gsm8k", "main", split=split)
+    problems = []
+
+    for ex in dataset.select(range(num_examples)):
+        question = ex["question"].strip()
+        answer = ex["answer"].strip()
+
+        # Split steps from answer (which is a string)
+        steps = answer.split("\n")
+        steps = [s.strip() for s in steps if s.strip()]
+        problems.append({"question": question, "steps": steps})
+
+    return problems
+
+
+# def get_sample_problem():
+#     return {
+#         "question": "Tom had 3 apples. He buys 2 more. How many apples does he have?",
+#         "steps": [
+#             "Tom starts with 3 apples.",
+#             "He buys 2 more.",
+#             "3 + 2 = 5",
+#             "Answer: 5 apples."
+#         ]
+#     }
+
 def fine_tune_llm(model, tokenizer, device, problems, config):
     model.train()
     optimizer = optim.AdamW(model.parameters(), lr=config["lr"])
-    loss_fn = nn.CrossEntropyLoss()
 
-    for epoch in range(config["epochs"]):
+    best_loss = float("inf")
+    patience_counter = 0
+    epoch = 0
+
+    while True:
         total_loss = 0.0
-        for problem in problems:
+        for index, problem in enumerate(problems):
+            print(f"For problem {index+1}")
             game = GSM8KGame(problem["question"], problem["steps"])
             state = game.make_image()
 
@@ -89,20 +115,81 @@ def fine_tune_llm(model, tokenizer, device, problems, config):
                 total_loss += loss.item()
                 state += "\n" + gold_step
 
-        print(f"Epoch {epoch + 1}: Total Loss = {total_loss:.4f}")
+        epoch += 1
+        print(f"Epoch {epoch}: Total Loss = {total_loss:.4f}")
+
+        # Early stopping check
+        if best_loss - total_loss > config["min_delta"]:
+            best_loss = total_loss
+            patience_counter = 0
+        else:
+            patience_counter += 1
+            if patience_counter >= config["patience"]:
+                print("Early stopping triggered.")
+                break
+
+# === Evaluate model response to a problem ===
+def evaluate_response(model, tokenizer, device, problem):
+    model.eval()
+    state = problem["question"]
+    print("\n=== Model Response After Fine-Tuning ===")
+    print(f"Question: {state}\n")
+
+    for _ in range(len(problem["steps"])):
+        prompt = state + "\nStep:"
+        inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True).to(device)
+        outputs = model.generate(
+            input_ids=inputs["input_ids"],
+            attention_mask=inputs["attention_mask"],
+            max_new_tokens=64,
+            do_sample=True,
+            temperature=0.7,
+            top_k=40
+        )
+        generated = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        response = generated[len(prompt):].strip().split("\n")[0]
+        print(f"Step: {response}")
+        state += "\n" + response
+
+    print("\n--- Ground Truth ---")
+    for step in problem["steps"]:
+        print(f"Step: {step}")
 
 # === Main fine-tuning loop ===
 def main():
     config = gsm8k_config()
-    model_name = "rayliuray/TinyZero-CountDown-Qwen2.5-3b-GRPO-Step10"
-    # device = "cuda" if torch.cuda.is_available() else "cpu"
-    device = "cpu"
+    # model_name = "rayliuray/TinyZero-CountDown-Qwen2.5-3b-GRPO-Step10" # too large for my GPU
+    model_name = "roastduckkiller/TinyZero-DO"
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    # device = "cpu"
 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForCausalLM.from_pretrained(model_name).to(device)
 
-    problems = [get_sample_problem()]
+    print("Loading in Problems")
+    def load_gsm8k_split(split="train", num_examples=10):
+        dataset = load_dataset("gsm8k", "main", split=split)
+        problems = []
+
+        for ex in dataset.select(range(num_examples)):
+            question = ex["question"].strip()
+            answer = ex["answer"].strip()
+            steps = answer.split("\n")
+            steps = [s.strip() for s in steps if s.strip()]
+            problems.append({"question": question, "steps": steps})
+
+        return problems
+
+    problems = load_gsm8k_split(split="train", num_examples=5)
+    test_problem = load_gsm8k_split(split="test", num_examples=1)[0]
+
+    # problems = load_gsm8k_split(split="train", num_examples=5)
+    # problems = [get_sample_problem()]
+    print("Starting to Fine-Tune the LLM")
     fine_tune_llm(model, tokenizer, device, problems, config)
+
+    # Evaluate on the sample problem after fine-tuning
+    evaluate_response(model, tokenizer, device, test_problem)
 
 if __name__ == "__main__":
     main()
