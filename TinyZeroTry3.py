@@ -47,7 +47,7 @@ class GSM8KGame:
 # values that works with example problem: 1e-6, 2, 0.0001
 def gsm8k_config():
     return {
-        "lr": 1e-5,             # Initial value: 1e-5, 
+        "lr": 1e-3,             # Initial value: 1e-5, 
         "patience": 2,           # Number of epochs without improvement before stopping
         "min_delta": 0.0001       # Minimum change in loss to qualify as improvement
         # "accuracy_req_steps": 3,    # Minimum number of times the loss needs to be less than or equal to "accuracy_req"
@@ -94,7 +94,32 @@ def fine_tune_llm(model, tokenizer, device, train_problems, test_problems, confi
     epoch = 0
 
     def get_reward(predicted, expected):
-        return 1 if predicted.strip() == expected.strip() else -1
+        reward = 0
+        if predicted.strip() == expected.strip():
+            reward += 1
+        else:
+            reward -= 1
+        if "+" in expected.strip():
+            if "+" in predicted.strip():
+                reward += 1
+            else:
+                reward -= 1
+        if "*" in expected.strip():
+            if "*" in predicted.strip():
+                reward += 1
+            else:
+                reward -= 1
+        if "-" in expected.strip():
+            if "-" in predicted.strip():
+                reward += 1
+            else:
+                reward -= 1
+        if "/" in expected.strip():
+            if "/" in predicted.strip():
+                reward += 1
+            else:
+                reward -= 1
+        return reward
 
     while True:
         total_reward = 0.0
@@ -114,7 +139,8 @@ def fine_tune_llm(model, tokenizer, device, train_problems, test_problems, confi
                     max_new_tokens=64,
                     do_sample=True,
                     temperature=0.7,
-                    top_k=40
+                    top_k=40,
+                    pad_token_id=tokenizer.eos_token_id
                 )
 
                 generated = tokenizer.decode(outputs[0], skip_special_tokens=True)
@@ -160,7 +186,7 @@ def fine_tune_llm(model, tokenizer, device, train_problems, test_problems, confi
         if best_loss - test_loss > config["min_delta"]:
             best_loss = test_loss
             patience_counter = 0
-        else:
+        elif total_reward > 3:
             patience_counter += 1
             if patience_counter >= config["patience"]:
                 print("Early stopping triggered.")
