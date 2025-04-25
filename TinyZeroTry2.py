@@ -1,3 +1,6 @@
+import argparse
+import os
+
 # === TinyZero GSM8K Integration with Fine-Tuning and Early Stopping ===
 import random
 import torch
@@ -5,6 +8,18 @@ import torch.nn as nn
 import torch.optim as optim
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import pandas as pd
+
+# === Sets up arguments for the run script ===
+def arg_setup():
+    parser = argparse.ArgumentParser(
+        prog="ecen743-tinyzero-trainer"
+    )
+
+    parser.add_argument('-m', '--model', type=str, required=True, help='Model to be used [tinyzero, grm_trained_tinyzero]')
+    parser.add_argument('-d', '--dataset', type=str, required=True, help='The dataset to be used [grm8k, prm800k]')
+    parser.add_argument('-p', '--problems', type=int, required=True, help='Number of problems to be used to train [0-5000]')
+    parser.add_argument('-o', '--output', type=str, required=True, help='Output directory for the model and testing loss csv')
+    return parser.parse_args()
 
 # === GSM8K-style environment class ===
 class GSM8KGame:
@@ -93,6 +108,7 @@ def fine_tune_llm(model, tokenizer, device, train_problems, test_problems, confi
     patience_counter = 0
     epoch = 0
     loss_overall = []
+    training_losses = []
     while True:
         total_loss = 0.0
         train_prob_num = 0
@@ -118,7 +134,9 @@ def fine_tune_llm(model, tokenizer, device, train_problems, test_problems, confi
             train_prob_num = index
 
         epoch += 1
-        print(f"Epoch {epoch}: Training Loss = {total_loss/train_prob_num:.4f}")
+        training_loss = total_loss/train_prob_num
+        print(f"Epoch {epoch}: Training Loss = {training_loss:.4f}")
+        training_losses.append(training_loss)
 
         # === Evaluate on test set ===
         model.eval()
@@ -225,11 +243,19 @@ def evaluate_response(model, tokenizer, device, problem):
 
 # === Main fine-tuning loop ===
 def main():
+    args = arg_setup()
     config = gsm8k_config()
-    model_name = "rayliuray/TinyZero-CountDown-Qwen2.5-3b-GRPO-Step10" # too large for my GPU
+    
+    if args.model == 'tinyzero':
+        model_name = "rayliuray/TinyZero-CountDown-Qwen2.5-3b-GRPO-Step100" # too large for my GPU
+    elif args.model == 'grm_trained_tinyzero':
+        model_name = "./grm_trained_tinyzero" # too large for my GPU
+    else:
+        print("Please provide exising model name! [tinyzero, grm_trained_tinyzero]")
+    # model_name = "./tinyzero_GSM_trained" # This is the directory to the GSM trained TinyZero, uncomment this to start tuning for PSM
     # model_name = "roastduckkiller/TinyZero-DO"
     # device = "cuda" if torch.cuda.is_available() else "cpu"
-    device = "cpu"
+    device = "cuda"
 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForCausalLM.from_pretrained(model_name).to(device)
@@ -250,14 +276,43 @@ def main():
         split_idx = int(len(problems) * (1 - test_ratio))
         return problems[:split_idx], problems[split_idx:]
 
-    total_problems = 5
-    train_problems, test_problems = load_gsm8k_split(total=total_problems, test_ratio=0.2)
+    def load_prm800k_split(total=100, test_ratio=0.2):
+        dataset = load_dataset("RyanYr/MATH-prm800k", split="train")
+        dataset = dataset.shuffle(seed=42).select(range(total))
+        problems = []
+
+        for ex in dataset:
+            question = ex["problem"].strip()
+            answer = ex["solution"].strip()
+            steps = answer.split(".")
+            steps = [s.strip() for s in steps if s.strip()]
+            problems.append({"question": question, "steps": steps})
+
+        split_idx = int(len(problems) * (1 - test_ratio))
+        return problems[:split_idx], problems[split_idx:]
+
+    total_problems = args.problems
+    if args.dataset == 'gsm8k':
+        train_problems, test_problems = load_gsm8k_split(total=total_problems, test_ratio=0.2)
+    elif args.dataset == 'prm800k':
+        train_problems, test_problems = load_gsm8k_split(total=total_problems, test_ratio=0.2)
+    else:
+        print("Please provide a valid dataset [gsm8k, prm800k]")
+        return
     test_problem = test_problems[0]
+
+    print("Creating output directory")
+    os.system(f"mkdir -p ./{args.output}")
 
     print("Starting to train the model")
     loss = fine_tune_llm(model, tokenizer, device, train_problems, test_problems, config)
-    pd.DataFrame(loss).to_csv(f"GradeSchool_TestingLoss_{total_problems}.csv",index=False,header=False)
+    pd.DataFrame(loss).to_csv(f"./{args.output}/TestingLoss_{total_problems}.csv",index=False,header=False)
     evaluate_response(model, tokenizer, device, test_problem)
+
+    model.save_pretrained(f"./{args.output}")
+    tokenizer.save_pretrained(f"./{args.output}")
+
+    print(f"Model trained and saved in {args.output}")
 
 if __name__ == "__main__":
     main()
