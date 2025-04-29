@@ -3,3 +3,8 @@ __pycache__
 
 *_local_sandbox.py
 temp.json
+archive*/
+
+gsm_trained_tinyzero-1.5.tar.gz
+
+*_model/

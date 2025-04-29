@@ -15,8 +15,8 @@ def arg_setup():
         prog="ecen743-tinyzero-trainer"
     )
 
-    parser.add_argument('-m', '--model', type=str, required=True, help='Model to be used [tinyzero, grm_trained_tinyzero]')
-    parser.add_argument('-d', '--dataset', type=str, required=True, help='The dataset to be used [grm8k, prm800k]')
+    parser.add_argument('-m', '--model', type=str, required=True, help='Model to be used [tinyzero, gsm_trained_tinyzero]')
+    parser.add_argument('-d', '--dataset', type=str, required=True, help='The dataset to be used [gsm8k, prm800k]')
     parser.add_argument('-p', '--problems', type=int, required=True, help='Number of problems to be used to train [0-5000]')
     parser.add_argument('-o', '--output', type=str, required=True, help='Output directory for the model and testing loss csv')
     return parser.parse_args()
@@ -62,8 +62,8 @@ class GSM8KGame:
 # values that works with example problem: 1e-6, 2, 0.0001
 def gsm8k_config():
     return {
-        "lr": 1e-6,             # Initial value: 1e-5, 
-        "patience": 8,           # Number of epochs without improvement before stopping
+        "lr": 1e-9,      # Initial value: 1e-5, 
+        "patience": 15,           # Number of epochs without improvement before stopping
         "min_delta": 0.0001       # Minimum change in loss to qualify as improvement
         # "accuracy_req_steps": 3,    # Minimum number of times the loss needs to be less than or equal to "accuracy_req"
         # "accuracy_req": 0.15        # Adequate loss for training.
@@ -113,7 +113,7 @@ def fine_tune_llm(model, tokenizer, device, train_problems, test_problems, confi
         total_loss = 0.0
         train_prob_num = 0
         for index, problem in enumerate(train_problems):
-            print(f"Training Problem {index+1}")
+            # print(f"Training Problem {index+1}")
             game = GSM8KGame(problem["question"], problem["steps"])
             state = game.make_image()
 
@@ -144,7 +144,7 @@ def fine_tune_llm(model, tokenizer, device, train_problems, test_problems, confi
         test_prob_num = 0
         with torch.no_grad():
             for test_index, problem in enumerate(test_problems):
-                print(f"Testing problem {test_index+1}")
+                # print(f"Testing problem {test_index+1}")
                 state = problem["question"]
                 for gold_step in problem["steps"]:
                     prompt = state + "\nStep:"
@@ -247,11 +247,16 @@ def main():
     config = gsm8k_config()
     
     if args.model == 'tinyzero':
-        model_name = "rayliuray/TinyZero-CountDown-Qwen2.5-3b-GRPO-Step100" # too large for my GPU
-    elif args.model == 'grm_trained_tinyzero':
-        model_name = "./grm_trained_tinyzero" # too large for my GPU
+        # model_name = "rayliuray/TinyZero-CountDown-Qwen2.5-3b-GRPO-Step10" # too large for my GPU
+        model_name = "rayliuray/TinyZero-CountDown-Qwen2.5-3b-GRPO-Step10" # too large for my GPU
+    elif args.model == 'gsm_trained_tinyzero':
+        model_name = "./gsm_trained_tinyzero" # too large for my GPU
+    elif args.model == "tinyzero-1.5":
+        model_name = "roastduckkiller/TinyZero-DO"
+    elif args.model == "gsm_trained_tinyzero-1.5":
+        model_name = "./gsm_trained_tinyzero-1.5"
     else:
-        print("Please provide exising model name! [tinyzero, grm_trained_tinyzero]")
+        print("Please provide exising model name! [tinyzero, gsm_trained_tinyzero, tinyzero-1.5]")
     # model_name = "./tinyzero_GSM_trained" # This is the directory to the GSM trained TinyZero, uncomment this to start tuning for PSM
     # model_name = "roastduckkiller/TinyZero-DO"
     # device = "cuda" if torch.cuda.is_available() else "cpu"
