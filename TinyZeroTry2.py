@@ -62,7 +62,7 @@ class GSM8KGame:
 # values that works with example problem: 1e-6, 2, 0.0001
 def gsm8k_config():
     return {
-        "lr": 1e-9,      # Initial value: 1e-5, 
+        "lr": 1e-8,      # Initial value: 1e-5, 
         "patience": 15,           # Number of epochs without improvement before stopping
         "min_delta": 0.0001       # Minimum change in loss to qualify as improvement
         # "accuracy_req_steps": 3,    # Minimum number of times the loss needs to be less than or equal to "accuracy_req"
