@@ -256,7 +256,7 @@ def main():
     elif args.model == "gsm_trained_tinyzero-1.5":
         model_name = "./gsm_trained_tinyzero-1.5"
     else:
-        print("Please provide exising model name! [tinyzero, gsm_trained_tinyzero, tinyzero-1.5]")
+        model_name = f"./{args.model}"
     # model_name = "./tinyzero_GSM_trained" # This is the directory to the GSM trained TinyZero, uncomment this to start tuning for PSM
     # model_name = "roastduckkiller/TinyZero-DO"
     # device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -300,7 +300,7 @@ def main():
     if args.dataset == 'gsm8k':
         train_problems, test_problems = load_gsm8k_split(total=total_problems, test_ratio=0.2)
     elif args.dataset == 'prm800k':
-        train_problems, test_problems = load_gsm8k_split(total=total_problems, test_ratio=0.2)
+        train_problems, test_problems = load_prm800k_split(total=total_problems, test_ratio=0.2)
     else:
         print("Please provide a valid dataset [gsm8k, prm800k]")
         return
@@ -311,7 +311,7 @@ def main():
 
     print("Starting to train the model")
     loss = fine_tune_llm(model, tokenizer, device, train_problems, test_problems, config)
-    pd.DataFrame(loss).to_csv(f"./{args.output}/TestingLoss_{total_problems}.csv",index=False,header=False)
+    pd.DataFrame(loss).to_csv(f"./{args.output}/{args.output}_{total_problems}.csv",index=False,header=False)
     evaluate_response(model, tokenizer, device, test_problem)
 
     model.save_pretrained(f"./{args.output}")
