@@ -1,0 +1,740 @@
+Executing at 50 problems:
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 3.2788
+ Test Loss = 2.8016
+Epoch 2: Training Loss = 2.9779
+ Test Loss = 2.5696
+Epoch 3: Training Loss = 2.7309
+ Test Loss = 2.3781
+Epoch 4: Training Loss = 2.5421
+ Test Loss = 2.2670
+Epoch 5: Training Loss = 2.4152
+ Test Loss = 2.1910
+Epoch 6: Training Loss = 2.3109
+ Test Loss = 2.1245
+Epoch 7: Training Loss = 2.2164
+ Test Loss = 2.0638
+Epoch 8: Training Loss = 2.1286
+ Test Loss = 2.0078
+Epoch 9: Training Loss = 2.0470
+ Test Loss = 1.9557
+Epoch 10: Training Loss = 1.9707
+ Test Loss = 1.9070
+Epoch 11: Training Loss = 1.8988
+ Test Loss = 1.8616
+Epoch 12: Training Loss = 1.8303
+ Test Loss = 1.8196
+Epoch 13: Training Loss = 1.7651
+ Test Loss = 1.7811
+Epoch 14: Training Loss = 1.7030
+ Test Loss = 1.7460
+Epoch 15: Training Loss = 1.6439
+ Test Loss = 1.7143
+Epoch 16: Training Loss = 1.5879
+ Test Loss = 1.6860
+Epoch 17: Training Loss = 1.5347
+ Test Loss = 1.6612
+Epoch 18: Training Loss = 1.4843
+ Test Loss = 1.6395
+Epoch 19: Training Loss = 1.4364
+ Test Loss = 1.6204
+Epoch 20: Training Loss = 1.3911
+ Test Loss = 1.6035
+Epoch 21: Training Loss = 1.3483
+ Test Loss = 1.5884
+Epoch 22: Training Loss = 1.3073
+ Test Loss = 1.5749
+Epoch 23: Training Loss = 1.2677
+ Test Loss = 1.5628
+Epoch 24: Training Loss = 1.2290
+ Test Loss = 1.5517
+Epoch 25: Training Loss = 1.1910
+ Test Loss = 1.5415
+Epoch 26: Training Loss = 1.1535
+ Test Loss = 1.5321
+Epoch 27: Training Loss = 1.1165
+ Test Loss = 1.5238
+Epoch 28: Training Loss = 1.0803
+ Test Loss = 1.5174
+Epoch 29: Training Loss = 1.0458
+ Test Loss = 1.5135
+Epoch 30: Training Loss = 1.0138
+ Test Loss = 1.5123
+Epoch 31: Training Loss = 0.9846
+ Test Loss = 1.5132
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Eric sorted 150 colored pencils into 5 containers for his art class. Before class, another teacher brought him 30 more pencils. How many can he evenly distribute between the five containers now?
+
+Step: To determine how many pencils Eric can evenly distribute among the five containers after receiving more pencils from another teacher, we start with the initial number of pencils and the number of containers. Eric initially has 150 pencils and he needs to distribute these pencils evenly among 5 containers. This can be calculated using the formula:
+Step: 1: 150 / 5 = 30.  
+Step: - Eric has 30 pencils remaining after distributing the initial 150 pencils evenly among the 5 containers.  
+Step: Therefore, Eric can evenly distribute the remaining 30 pencils between the five containers.  
+
+--- Ground Truth ---
+Step: Before the extra colored pencils, he had 150/5=<<150/5=30>>30 colored pencils in each container.
+Step: With the other colored pencils, he is given he now has 150+30=<<150+30=180>>180 colored pencils
+Step: If you distribute them evenly each container should have 180/5=<<180/5=36>>36 colored pencils
+Step: #### 36
+Model trained and saved in gsm_trained_tinyzero-1.5
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 3.2788
+ Test Loss = 2.8016
+Epoch 2: Training Loss = 2.9779
+ Test Loss = 2.5696
+Epoch 3: Training Loss = 2.7309
+ Test Loss = 2.3781
+Epoch 4: Training Loss = 2.5421
+ Test Loss = 2.2670
+Epoch 5: Training Loss = 2.4152
+ Test Loss = 2.1910
+Epoch 6: Training Loss = 2.3109
+ Test Loss = 2.1245
+Epoch 7: Training Loss = 2.2164
+ Test Loss = 2.0638
+Epoch 8: Training Loss = 2.1286
+ Test Loss = 2.0078
+Epoch 9: Training Loss = 2.0470
+ Test Loss = 1.9557
+Epoch 10: Training Loss = 1.9707
+ Test Loss = 1.9070
+Epoch 11: Training Loss = 1.8988
+ Test Loss = 1.8616
+Epoch 12: Training Loss = 1.8303
+ Test Loss = 1.8196
+Epoch 13: Training Loss = 1.7651
+ Test Loss = 1.7811
+Epoch 14: Training Loss = 1.7030
+ Test Loss = 1.7460
+Epoch 15: Training Loss = 1.6439
+ Test Loss = 1.7143
+Epoch 16: Training Loss = 1.5879
+ Test Loss = 1.6860
+Epoch 17: Training Loss = 1.5347
+ Test Loss = 1.6612
+Epoch 18: Training Loss = 1.4843
+ Test Loss = 1.6395
+Epoch 19: Training Loss = 1.4364
+ Test Loss = 1.6204
+Epoch 20: Training Loss = 1.3911
+ Test Loss = 1.6035
+Epoch 21: Training Loss = 1.3483
+ Test Loss = 1.5884
+Epoch 22: Training Loss = 1.3073
+ Test Loss = 1.5749
+Epoch 23: Training Loss = 1.2677
+ Test Loss = 1.5628
+Epoch 24: Training Loss = 1.2290
+ Test Loss = 1.5517
+Epoch 25: Training Loss = 1.1910
+ Test Loss = 1.5415
+Epoch 26: Training Loss = 1.1535
+ Test Loss = 1.5321
+Epoch 27: Training Loss = 1.1165
+ Test Loss = 1.5238
+Epoch 28: Training Loss = 1.0803
+ Test Loss = 1.5174
+Epoch 29: Training Loss = 1.0458
+ Test Loss = 1.5135
+Epoch 30: Training Loss = 1.0138
+ Test Loss = 1.5123
+Epoch 31: Training Loss = 0.9846
+ Test Loss = 1.5132
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Eric sorted 150 colored pencils into 5 containers for his art class. Before class, another teacher brought him 30 more pencils. How many can he evenly distribute between the five containers now?
+
+Step: Eric originally had 150 pencils and his teacher brought him 30 more, a total of 150 + 30 = <<150+30=180>>180 pencils. He originally used 150 pencils and now has 180 pencils,
+Step: The number of pencils that can be evenly distributed between the five containers is 180/5=<<180/5=36>>36 pencils.
+Step: #### 36
+Step: #### The answer is: 36
+
+--- Ground Truth ---
+Step: Before the extra colored pencils, he had 150/5=<<150/5=30>>30 colored pencils in each container.
+Step: With the other colored pencils, he is given he now has 150+30=<<150+30=180>>180 colored pencils
+Step: If you distribute them evenly each container should have 180/5=<<180/5=36>>36 colored pencils
+Step: #### 36
+Model trained and saved in prm_trained_tinyzero-1.5
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 0.9578
+ Test Loss = 1.5168
+Epoch 2: Training Loss = 0.9307
+ Test Loss = 1.5201
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Eric sorted 150 colored pencils into 5 containers for his art class. Before class, another teacher brought him 30 more pencils. How many can he evenly distribute between the five containers now?
+
+Step: The total number of pencils Eric has now is 150+30=180 pencils. After adding the additional pencils, the total number of pencils is 180+30=210 pencils. Since he has 5 containers, he can evenly distribute 210 pencils/
+Step: 210 / 5=42 pencils per container. The answer is 42.
+Step: 1. Eric sorted 150 colored pencils into 5 containers.
+Step: 150 = 150
+
+--- Ground Truth ---
+Step: Before the extra colored pencils, he had 150/5=<<150/5=30>>30 colored pencils in each container.
+Step: With the other colored pencils, he is given he now has 150+30=<<150+30=180>>180 colored pencils
+Step: If you distribute them evenly each container should have 180/5=<<180/5=36>>36 colored pencils
+Step: #### 36
+Model trained and saved in curriculum_trained_tinyzero-1.5
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 2.3279
+ Test Loss = 2.2732
+Epoch 2: Training Loss = 2.0710
+ Test Loss = 2.0618
+Epoch 3: Training Loss = 1.8627
+ Test Loss = 1.9055
+Epoch 4: Training Loss = 1.7013
+ Test Loss = 1.7909
+Epoch 5: Training Loss = 1.5690
+ Test Loss = 1.6981
+Epoch 6: Training Loss = 1.4540
+ Test Loss = 1.6201
+Epoch 7: Training Loss = 1.3557
+ Test Loss = 1.5586
+Epoch 8: Training Loss = 1.2735
+ Test Loss = 1.5098
+Epoch 9: Training Loss = 1.2011
+ Test Loss = 1.4680
+Epoch 10: Training Loss = 1.1348
+ Test Loss = 1.4311
+Epoch 11: Training Loss = 1.0730
+ Test Loss = 1.3986
+Epoch 12: Training Loss = 1.0151
+ Test Loss = 1.3705
+Epoch 13: Training Loss = 0.9611
+ Test Loss = 1.3469
+Epoch 14: Training Loss = 0.9109
+ Test Loss = 1.3281
+Epoch 15: Training Loss = 0.8638
+ Test Loss = 1.3134
+Epoch 16: Training Loss = 0.8191
+ Test Loss = 1.3021
+Epoch 17: Training Loss = 0.7765
+ Test Loss = 1.2937
+Epoch 18: Training Loss = 0.7358
+ Test Loss = 1.2878
+Epoch 19: Training Loss = 0.6968
+ Test Loss = 1.2843
+Epoch 20: Training Loss = 0.6593
+ Test Loss = 1.2828
+Epoch 21: Training Loss = 0.6232
+ Test Loss = 1.2831
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Eric sorted 150 colored pencils into 5 containers for his art class. Before class, another teacher brought him 30 more pencils. How many can he evenly distribute between the five containers now?
+
+Step: He had 150+30 =<<150+30=180>>180 pencils total. He can evenly distribute 180/5 =<<180/5=36>>36 pencils in each container. The answer is: 36
+Step: 
+Step: 
+Step: Step 1: Determine the total number of pencils.
+
+--- Ground Truth ---
+Step: Before the extra colored pencils, he had 150/5=<<150/5=30>>30 colored pencils in each container.
+Step: With the other colored pencils, he is given he now has 150+30=<<150+30=180>>180 colored pencils
+Step: If you distribute them evenly each container should have 180/5=<<180/5=36>>36 colored pencils
+Step: #### 36
+Model trained and saved in gsm_trained_tinyzero
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 2.3279
+ Test Loss = 2.2732
+Epoch 2: Training Loss = 2.0710
+ Test Loss = 2.0618
+Epoch 3: Training Loss = 1.8627
+ Test Loss = 1.9055
+Epoch 4: Training Loss = 1.7013
+ Test Loss = 1.7909
+Epoch 5: Training Loss = 1.5690
+ Test Loss = 1.6981
+Epoch 6: Training Loss = 1.4540
+ Test Loss = 1.6201
+Epoch 7: Training Loss = 1.3557
+ Test Loss = 1.5586
+Epoch 8: Training Loss = 1.2735
+ Test Loss = 1.5098
+Epoch 9: Training Loss = 1.2011
+ Test Loss = 1.4680
+Epoch 10: Training Loss = 1.1348
+ Test Loss = 1.4311
+Epoch 11: Training Loss = 1.0730
+ Test Loss = 1.3986
+Epoch 12: Training Loss = 1.0151
+ Test Loss = 1.3705
+Epoch 13: Training Loss = 0.9611
+ Test Loss = 1.3469
+Epoch 14: Training Loss = 0.9109
+ Test Loss = 1.3281
+Epoch 15: Training Loss = 0.8638
+ Test Loss = 1.3134
+Epoch 16: Training Loss = 0.8191
+ Test Loss = 1.3021
+Epoch 17: Training Loss = 0.7765
+ Test Loss = 1.2937
+Epoch 18: Training Loss = 0.7358
+ Test Loss = 1.2878
+Epoch 19: Training Loss = 0.6968
+ Test Loss = 1.2843
+Epoch 20: Training Loss = 0.6593
+ Test Loss = 1.2828
+Epoch 21: Training Loss = 0.6232
+ Test Loss = 1.2831
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Eric sorted 150 colored pencils into 5 containers for his art class. Before class, another teacher brought him 30 more pencils. How many can he evenly distribute between the five containers now?
+
+Step: Initially, there were 150 colored pencils, so each container has 150 / 5 = 30 colored pencils. After receiving 30 more colored pencils, there are a total of 150 + 30 = 180 colored pencils. Step:Therefore, Eric
+Step: can put 180 / 5 = 36 colored pencils in each container. The answer is 36
+Step: 
+Step: 
+
+--- Ground Truth ---
+Step: Before the extra colored pencils, he had 150/5=<<150/5=30>>30 colored pencils in each container.
+Step: With the other colored pencils, he is given he now has 150+30=<<150+30=180>>180 colored pencils
+Step: If you distribute them evenly each container should have 180/5=<<180/5=36>>36 colored pencils
+Step: #### 36
+Model trained and saved in prm_trained_tinyzero
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 0.5887
+ Test Loss = 1.2851
+Epoch 2: Training Loss = 0.5541
+ Test Loss = 1.2886
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Eric sorted 150 colored pencils into 5 containers for his art class. Before class, another teacher brought him 30 more pencils. How many can he evenly distribute between the five containers now?
+
+Step: He started with 150 + 30 = <<150+30=180>>180 colored pencils. 180 / 5 = <<180/5=36>>36 colored pencils can be evenly distributed between the five containers. Step:1
+Step: 
+Step: 2
+Step: 3
+
+--- Ground Truth ---
+Step: Before the extra colored pencils, he had 150/5=<<150/5=30>>30 colored pencils in each container.
+Step: With the other colored pencils, he is given he now has 150+30=<<150+30=180>>180 colored pencils
+Step: If you distribute them evenly each container should have 180/5=<<180/5=36>>36 colored pencils
+Step: #### 36
+Model trained and saved in curriculum_trained_tinyzero
+Executing at 100 problems:
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 3.2015
+ Test Loss = 2.7427
+Epoch 2: Training Loss = 2.7165
+ Test Loss = 2.4648
+Epoch 3: Training Loss = 2.4736
+ Test Loss = 2.3263
+Epoch 4: Training Loss = 2.3052
+ Test Loss = 2.2110
+Epoch 5: Training Loss = 2.1624
+ Test Loss = 2.1109
+Epoch 6: Training Loss = 2.0375
+ Test Loss = 2.0228
+Epoch 7: Training Loss = 1.9264
+ Test Loss = 1.9462
+Epoch 8: Training Loss = 1.8281
+ Test Loss = 1.8809
+Epoch 9: Training Loss = 1.7415
+ Test Loss = 1.8257
+Epoch 10: Training Loss = 1.6647
+ Test Loss = 1.7791
+Epoch 11: Training Loss = 1.5953
+ Test Loss = 1.7396
+Epoch 12: Training Loss = 1.5312
+ Test Loss = 1.7060
+Epoch 13: Training Loss = 1.4711
+ Test Loss = 1.6762
+Epoch 14: Training Loss = 1.4144
+ Test Loss = 1.6501
+Epoch 15: Training Loss = 1.3618
+ Test Loss = 1.6296
+Epoch 16: Training Loss = 1.3147
+ Test Loss = 1.6151
+Epoch 17: Training Loss = 1.2732
+ Test Loss = 1.6058
+Epoch 18: Training Loss = 1.2362
+ Test Loss = 1.6001
+Epoch 19: Training Loss = 1.2022
+ Test Loss = 1.5968
+Epoch 20: Training Loss = 1.1704
+ Test Loss = 1.5953
+Epoch 21: Training Loss = 1.1402
+ Test Loss = 1.5953
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Nathan plays amateur baseball. He played for 3 hours for two weeks, every day. His friend Tobias played for 5 hours every day, but only for one week. How many hours did Nathan and Tobias play in total?
+
+Step: Nathan played for 3 hours / day * 7 days = <<3*7=21>>21 hours. Tobias played for 5 hours / day * 6 days = <<5*6=30>>30 hours. Nathan and Tobias each played for 21 hours + 3
+Step: 0 hours, so Nathan and Tobias together played 21 + 30 hours. The answer is 51.
+Step: #### 51
+Step: Step 1: First, let's find out how many hours Nathan played in total. Nathan played for 3 hours / day * 7 days = <<3*7=21>>21 hours.
+
+--- Ground Truth ---
+Step: Two weeks are 14 days, so Nathan played for 3 * 14 = <<14*3=42>>42 hours.
+Step: Tobias played for 7 days, so he played a total of 5 * 7 = <<5*7=35>>35 hours.
+Step: Nathan and Tobias played together for 42 + 35 = <<42+35=77>>77 hours.
+Step: #### 77
+Model trained and saved in gsm_trained_tinyzero-1.5
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 3.2015
+ Test Loss = 2.7427
+Epoch 2: Training Loss = 2.7165
+ Test Loss = 2.4648
+Epoch 3: Training Loss = 2.4736
+ Test Loss = 2.3263
+Epoch 4: Training Loss = 2.3052
+ Test Loss = 2.2110
+Epoch 5: Training Loss = 2.1624
+ Test Loss = 2.1109
+Epoch 6: Training Loss = 2.0375
+ Test Loss = 2.0228
+Epoch 7: Training Loss = 1.9264
+ Test Loss = 1.9462
+Epoch 8: Training Loss = 1.8281
+ Test Loss = 1.8809
+Epoch 9: Training Loss = 1.7415
+ Test Loss = 1.8257
+Epoch 10: Training Loss = 1.6647
+ Test Loss = 1.7791
+Epoch 11: Training Loss = 1.5953
+ Test Loss = 1.7396
+Epoch 12: Training Loss = 1.5312
+ Test Loss = 1.7060
+Epoch 13: Training Loss = 1.4711
+ Test Loss = 1.6762
+Epoch 14: Training Loss = 1.4144
+ Test Loss = 1.6501
+Epoch 15: Training Loss = 1.3618
+ Test Loss = 1.6296
+Epoch 16: Training Loss = 1.3147
+ Test Loss = 1.6151
+Epoch 17: Training Loss = 1.2732
+ Test Loss = 1.6058
+Epoch 18: Training Loss = 1.2362
+ Test Loss = 1.6001
+Epoch 19: Training Loss = 1.2022
+ Test Loss = 1.5968
+Epoch 20: Training Loss = 1.1704
+ Test Loss = 1.5953
+Epoch 21: Training Loss = 1.1402
+ Test Loss = 1.5953
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Nathan plays amateur baseball. He played for 3 hours for two weeks, every day. His friend Tobias played for 5 hours every day, but only for one week. How many hours did Nathan and Tobias play in total?
+
+Step: Nathan played for 2 x 7 = <<2*7=14>>14 days. So, Nathan played for a total of 14 x 3 = <<14*3=42>>42 hours. Tobias played for 5 x 7 = <<5*7=
+Step: 5 days. So, Tobias played for a total of 5 x 3 = <<5*3=15>>15 hours. Thus, Nathan and Tobias played 42 + 15 = <<42+15=57>>57 hours in total.#### 57
+Step: #### Answer:X 57 .<br/>** Explanation:**<br/>1. Nathan played for 3 hours for two weeks, every day. So, he played for 3 x 7 = <<3*7=21>>21 days. So, Nathan played for a total of 2
+Step: 2. Tobias played for 5 hours every day, but only for one week, so he played for 5 x 7 = <<5*7=35>>35 days. So, Tobias played for a total of 35. So, the answer is: 57.<br/>Step
+
+--- Ground Truth ---
+Step: Two weeks are 14 days, so Nathan played for 3 * 14 = <<14*3=42>>42 hours.
+Step: Tobias played for 7 days, so he played a total of 5 * 7 = <<5*7=35>>35 hours.
+Step: Nathan and Tobias played together for 42 + 35 = <<42+35=77>>77 hours.
+Step: #### 77
+Model trained and saved in prm_trained_tinyzero-1.5
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 1.1113
+ Test Loss = 1.5967
+Epoch 2: Training Loss = 1.0815
+ Test Loss = 1.5994
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Nathan plays amateur baseball. He played for 3 hours for two weeks, every day. His friend Tobias played for 5 hours every day, but only for one week. How many hours did Nathan and Tobias play in total?
+
+Step: In a week, Nathan played 3 x 7 = <<3*7=21>>21 hours. Tobias played 5 x 7 = <<5*7=35>>35 hours. The total number of hours they played together is 21 + 35 = <<21
+Step: 35=56. Answer: Nathan and Tobias played 56 hours in total.
+Step: Step-by-step explanation:Step:Step:Step:Step:Step:Step:Step:
+Step: Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:Step:
+
+--- Ground Truth ---
+Step: Two weeks are 14 days, so Nathan played for 3 * 14 = <<14*3=42>>42 hours.
+Step: Tobias played for 7 days, so he played a total of 5 * 7 = <<5*7=35>>35 hours.
+Step: Nathan and Tobias played together for 42 + 35 = <<42+35=77>>77 hours.
+Step: #### 77
+Model trained and saved in curriculum_trained_tinyzero-1.5
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 2.3647
+ Test Loss = 2.0128
+Epoch 2: Training Loss = 1.9570
+ Test Loss = 1.7541
+Epoch 3: Training Loss = 1.7051
+ Test Loss = 1.5787
+Epoch 4: Training Loss = 1.5292
+ Test Loss = 1.4687
+Epoch 5: Training Loss = 1.4035
+ Test Loss = 1.3915
+Epoch 6: Training Loss = 1.2991
+ Test Loss = 1.3296
+Epoch 7: Training Loss = 1.2082
+ Test Loss = 1.2795
+Epoch 8: Training Loss = 1.1285
+ Test Loss = 1.2396
+Epoch 9: Training Loss = 1.0575
+ Test Loss = 1.2077
+Epoch 10: Training Loss = 0.9921
+ Test Loss = 1.1822
+Epoch 11: Training Loss = 0.9313
+ Test Loss = 1.1621
+Epoch 12: Training Loss = 0.8748
+ Test Loss = 1.1467
+Epoch 13: Training Loss = 0.8224
+ Test Loss = 1.1355
+Epoch 14: Training Loss = 0.7738
+ Test Loss = 1.1278
+Epoch 15: Training Loss = 0.7286
+ Test Loss = 1.1234
+Epoch 16: Training Loss = 0.6865
+ Test Loss = 1.1224
+Epoch 17: Training Loss = 0.6471
+ Test Loss = 1.1245
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Nathan plays amateur baseball. He played for 3 hours for two weeks, every day. His friend Tobias played for 5 hours every day, but only for one week. How many hours did Nathan and Tobias play in total?
+
+Step: There are 7 days in one week, so Nathan played 3*2=<<3*2=6>>6 hours a day. He played for two weeks, so he played 6*14=<<6*14=84>>84 hours. Tobias played for one week, so
+Step: he played 5*7=<<5*7=35>>35 hours. In total, they played 84+35=<<84+35=119>>119 hours.#### 119
+Step: 1. Calculate the total hours Nathan played: 3 hours/day * 2 weeks * 7 days/week = <<3*2*7=42>>42 hours.
+Step: 2. Calculate the total hours Tobias played: 5 hours/day * 1 week * 7 days/week = 35 hours.
+
+--- Ground Truth ---
+Step: Two weeks are 14 days, so Nathan played for 3 * 14 = <<14*3=42>>42 hours.
+Step: Tobias played for 7 days, so he played a total of 5 * 7 = <<5*7=35>>35 hours.
+Step: Nathan and Tobias played together for 42 + 35 = <<42+35=77>>77 hours.
+Step: #### 77
+Model trained and saved in gsm_trained_tinyzero
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 2.3647
+ Test Loss = 2.0128
+Epoch 2: Training Loss = 1.9570
+ Test Loss = 1.7541
+Epoch 3: Training Loss = 1.7051
+ Test Loss = 1.5787
+Epoch 4: Training Loss = 1.5292
+ Test Loss = 1.4687
+Epoch 5: Training Loss = 1.4035
+ Test Loss = 1.3915
+Epoch 6: Training Loss = 1.2991
+ Test Loss = 1.3296
+Epoch 7: Training Loss = 1.2082
+ Test Loss = 1.2795
+Epoch 8: Training Loss = 1.1285
+ Test Loss = 1.2396
+Epoch 9: Training Loss = 1.0575
+ Test Loss = 1.2077
+Epoch 10: Training Loss = 0.9921
+ Test Loss = 1.1822
+Epoch 11: Training Loss = 0.9313
+ Test Loss = 1.1621
+Epoch 12: Training Loss = 0.8748
+ Test Loss = 1.1467
+Epoch 13: Training Loss = 0.8224
+ Test Loss = 1.1355
+Epoch 14: Training Loss = 0.7738
+ Test Loss = 1.1278
+Epoch 15: Training Loss = 0.7286
+ Test Loss = 1.1234
+Epoch 16: Training Loss = 0.6865
+ Test Loss = 1.1224
+Epoch 17: Training Loss = 0.6471
+ Test Loss = 1.1245
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Nathan plays amateur baseball. He played for 3 hours for two weeks, every day. His friend Tobias played for 5 hours every day, but only for one week. How many hours did Nathan and Tobias play in total?
+
+Step: There are 7 days in one week, so Nathan played for 3*2= <<3*2=6>>6 hours a day. In total, Nathan played 6*7= <<6*7=42>>42 hours. Tobias played for 5*7= <<5*7
+Step: 35>>35 hours. In total, Nathan and Tobias played 35+42= <<35+42=77>>77 hours.#### 77
+Step: 
+Step: 1. Calculate the total hours Nathan played: 3 hours/day * 7 days/week * 2 weeks = 42 hours
+
+--- Ground Truth ---
+Step: Two weeks are 14 days, so Nathan played for 3 * 14 = <<14*3=42>>42 hours.
+Step: Tobias played for 7 days, so he played a total of 5 * 7 = <<5*7=35>>35 hours.
+Step: Nathan and Tobias played together for 42 + 35 = <<42+35=77>>77 hours.
+Step: #### 77
+Model trained and saved in prm_trained_tinyzero
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 0.6110
+ Test Loss = 1.1293
+Epoch 2: Training Loss = 0.5762
+ Test Loss = 1.1362
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Nathan plays amateur baseball. He played for 3 hours for two weeks, every day. His friend Tobias played for 5 hours every day, but only for one week. How many hours did Nathan and Tobias play in total?
+
+Step: In two weeks, every day, Nathan played 3*7=21 hours. Step 2: Nathan played for a total of 21*2=42 hours. Step 3: Tobias played for a total of 5*7=35 hours. Step 4: In total,
+Step: Nathan and Tobias played for 35+42=77 hours. The answer is 77
+Step: 
+Step: Step 1: Calculate the total hours Nathan played. Nathan played for 3 hours every day for 2 weeks. We need to convert the weeks into days to multiply by the hours per day. Nathan played 2 weeks * 7 days per week = <<2*7=14>>14 days.
+
+--- Ground Truth ---
+Step: Two weeks are 14 days, so Nathan played for 3 * 14 = <<14*3=42>>42 hours.
+Step: Tobias played for 7 days, so he played a total of 5 * 7 = <<5*7=35>>35 hours.
+Step: Nathan and Tobias played together for 42 + 35 = <<42+35=77>>77 hours.
+Step: #### 77
+Model trained and saved in curriculum_trained_tinyzero
+Executing at 150 problems:
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 3.0533
+ Test Loss = 2.7151
+Epoch 2: Training Loss = 2.5411
+ Test Loss = 2.4586
+Epoch 3: Training Loss = 2.3016
+ Test Loss = 2.2873
+Epoch 4: Training Loss = 2.1148
+ Test Loss = 2.1511
+Epoch 5: Training Loss = 1.9604
+ Test Loss = 2.0414
+Epoch 6: Training Loss = 1.8326
+ Test Loss = 1.9570
+Epoch 7: Training Loss = 1.7280
+ Test Loss = 1.8942
+Epoch 8: Training Loss = 1.6404
+ Test Loss = 1.8456
+Epoch 9: Training Loss = 1.5630
+ Test Loss = 1.8040
+Epoch 10: Training Loss = 1.4916
+ Test Loss = 1.7674
+Epoch 11: Training Loss = 1.4283
+ Test Loss = 1.7397
+Epoch 12: Training Loss = 1.3755
+ Test Loss = 1.7208
+Epoch 13: Training Loss = 1.3310
+ Test Loss = 1.7080
+Epoch 14: Training Loss = 1.2920
+ Test Loss = 1.6993
+Epoch 15: Training Loss = 1.2562
+ Test Loss = 1.6936
+Epoch 16: Training Loss = 1.2226
+ Test Loss = 1.6904
+Epoch 17: Training Loss = 1.1904
+ Test Loss = 1.6894
+Epoch 18: Training Loss = 1.1595
+ Test Loss = 1.6907
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Dylan's mother is throwing a baby shower for her best friend. She is expecting 40 guests, of whom she has cleared the parking lot to park in to, leaving only her car and her husband's jeep in the parking lot. The 40 guests, though, arrive in only 10 cars that they park in the parking lot.  If each car has 4 wheels, how many car wheels are there in the parking lot, including both of Dylan's parent's car wheels?
+
+Step: There are 10 drivers in the parking lot and each has 4 wheels so there are 10*4 = <<10*4=40>>40 car wheels. There are 40 guests in the parking lot and each guest has one wheel so there are 40*1 =
+Step: 1 = <<40*1=40>>40 car wheels. There are 40 guests in the parking lot and each guest has one wheel so there are
+Step: 40 * 1 = <<40*1=40>>40 car wheels. Given that Dylan's mother has 4 parent car in the parking lot, which has 4 wheels each. Thus, the total number of car wheels in the parking lot is 40 + 40 +
+Step: Step:40 + 40 + 4 = <<40+40+4=84>>84 car wheels. In the parking lot there are 84 car wheels.Step:<\/s>
+
+--- Ground Truth ---
+Step: 10 cars are parked around for the party, 10 x 4 wheels each car = <<10*4=40>>40 wheels total.
+Step: Dylan's parents both have a car with 4 wheels each, 2 x 4 = <<4*2=8>>8 more wheels.
+Step: Combined, there are 40 + 8 = <<40+8=48>>48 wheels total on the Dylan family property.
+Step: #### 48
+Model trained and saved in gsm_trained_tinyzero-1.5
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 3.0533
+ Test Loss = 2.7151
+Epoch 2: Training Loss = 2.5411
+ Test Loss = 2.4586
+Epoch 3: Training Loss = 2.3016
+ Test Loss = 2.2873
+Epoch 4: Training Loss = 2.1148
+ Test Loss = 2.1511
+Epoch 5: Training Loss = 1.9604
+ Test Loss = 2.0414
+Epoch 6: Training Loss = 1.8326
+ Test Loss = 1.9570
+Epoch 7: Training Loss = 1.7280
+ Test Loss = 1.8942
+Epoch 8: Training Loss = 1.6404
+ Test Loss = 1.8456
+Epoch 9: Training Loss = 1.5630
+ Test Loss = 1.8040
+Epoch 10: Training Loss = 1.4916
+ Test Loss = 1.7674
+Epoch 11: Training Loss = 1.4283
+ Test Loss = 1.7397
+Epoch 12: Training Loss = 1.3755
+ Test Loss = 1.7208
+Epoch 13: Training Loss = 1.3310
+ Test Loss = 1.7080
+Epoch 14: Training Loss = 1.2920
+ Test Loss = 1.6993
+Epoch 15: Training Loss = 1.2562
+ Test Loss = 1.6936
+Epoch 16: Training Loss = 1.2226
+ Test Loss = 1.6904
+Epoch 17: Training Loss = 1.1904
+ Test Loss = 1.6894
+Epoch 18: Training Loss = 1.1595
+ Test Loss = 1.6907
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Dylan's mother is throwing a baby shower for her best friend. She is expecting 40 guests, of whom she has cleared the parking lot to park in to, leaving only her car and her husband's jeep in the parking lot. The 40 guests, though, arrive in only 10 cars that they park in the parking lot.  If each car has 4 wheels, how many car wheels are there in the parking lot, including both of Dylan's parent's car wheels?
+
+Step: There are 10 cars with 4 wheels each for a total of 10 * 4 = <<10*4=40>>40 wheels. Dylan's parents' 2 cars have 4 wheels each for a total of 2 * 4 = <<2*4=8>>
+Step: Therefore, there are 40 + 8 = <<40+8=48>>48 wheels in the parking lot. 48 car wheels in all. 48 / 4 = <<48/4=12>>12 car wheels per person. 12 x
+Step: 4 = <<12*4=48>>48 car wheels in the parking lot.
+Step: #### 48
+
+--- Ground Truth ---
+Step: 10 cars are parked around for the party, 10 x 4 wheels each car = <<10*4=40>>40 wheels total.
+Step: Dylan's parents both have a car with 4 wheels each, 2 x 4 = <<4*2=8>>8 more wheels.
+Step: Combined, there are 40 + 8 = <<40+8=48>>48 wheels total on the Dylan family property.
+Step: #### 48
+Model trained and saved in prm_trained_tinyzero-1.5
+Loading in Problems
+Creating output directory
+Starting to train the model
+Epoch 1: Training Loss = 1.1299
+ Test Loss = 1.6941
+Epoch 2: Training Loss = 1.1000
+ Test Loss = 1.6989
+Early stopping triggered.
+
+=== Model Response After Fine-Tuning ===
+Question: Dylan's mother is throwing a baby shower for her best friend. She is expecting 40 guests, of whom she has cleared the parking lot to park in to, leaving only her car and her husband's jeep in the parking lot. The 40 guests, though, arrive in only 10 cars that they park in the parking lot.  If each car has 4 wheels, how many car wheels are there in the parking lot, including both of Dylan's parent's car wheels?
+
+Step: There are 10 guests + 1 Dylan's parent = <<10+1=11>>11 cars in the parking lot. If each car has 4 wheels, then the total number of wheels in the parking lot is <<11*4>=44>>44 car wheels. Thus
+Step: 44 car wheels + 4 car wheels in Dylan's parent's car = <<44+4>=48>>48 car wheels. So, the total number of car wheels in the parking lot is 48.#### 48#### 48
+Step: #### Explanation:<br/>1. The total number of cars in the parking lot is the sum of the parents' cars and the guests' cars, <math>40 = 10 + 40</math>.<br/>2. The total number of wheels in the parking lot is the sum of
+Step: ##<math>40 = 40 * 4</math> .<br/>3. The parents' cars have <math>4 * 4 = <<4*4=16>>16</math> car wheels because <math>4 * 4 = 16</math
+
+--- Ground Truth ---
+Step: 10 cars are parked around for the party, 10 x 4 wheels each car = <<10*4=40>>40 wheels total.
+Step: Dylan's parents both have a car with 4 wheels each, 2 x 4 = <<4*2=8>>8 more wheels.
+Step: Combined, there are 40 + 8 = <<40+8=48>>48 wheels total on the Dylan family property.
+Step: #### 48
+Model trained and saved in curriculum_trained_tinyzero-1.5

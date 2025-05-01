@@ -1,0 +1,16 @@
+.venv
+__pycache__
+
+*_local_sandbox.py
+temp.json
+archive*/
+
+gsm_trained_tinyzero-1.5.tar.gz
+*.tar.gz
+
+create_dataset.py
+
+*_model/
+*_problems/
+
+*_dataset.json
