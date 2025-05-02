@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "L."
+  given-names: "David"
+- family-names: "N."
+  given-names: "Amara"
+- family-names: "L."
+  given-names: "Nicole"
+title: "ECEN743-TinyZero-SFT"
+version: 1.0.0
+doi: 10.5281/zenodo.1234
+date-released: 2025-05-01
+url: "https://github.com/davidliu2024/ECEN743-TinyZero-SFT"
